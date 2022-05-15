@@ -84,8 +84,6 @@ class Biblioteka:
 
         return True
 
-        
-
 class Czytelnik:
     wypozyczenia = []
 
@@ -151,6 +149,3 @@ for index in range(0, actions_count):
         tytul = book[2]
         is_success = biblioteka.oddaj(czytelnik, tytul)
         print(is_success)
-
-    
-
