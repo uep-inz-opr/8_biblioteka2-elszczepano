@@ -20,7 +20,7 @@ class Biblioteka:
     
     def _get_egzemplarz(self, tytul):
         for egzemplarz in self.egzemplarze:
-            if egzemplarz.tytul == tytul and egzemplarz.wypozyczony == False:
+            if egzemplarz.ksiazka_ref.tytul == tytul and egzemplarz.wypozyczony == False:
                 return egzemplarz
         return False
 
@@ -91,7 +91,7 @@ class Czytelnik:
 
     def get_egzemplarz(self, tytul):
         for egzemplarz in self.wypozyczenia:
-            if egzemplarz.tytul == tytul:
+            if egzemplarz.ksiazka_ref.tytul == tytul:
                 return egzemplarz
         return False
 
