@@ -49,8 +49,6 @@ class Biblioteka:
         if( len( czytelnik.wypozyczenia ) >= 3 ):
             return False
 
-        print(tytul, czytelnik.get_egzemplarz(tytul), czytelnik.wypozyczenia)
-
         # można wypożyczyć tylko jeden egzemplarz tej samej książki
         if( czytelnik.get_egzemplarz( tytul ) != False ):
             return False
@@ -102,20 +100,16 @@ class Czytelnik:
         return True
 
     def oddaj(self, tytul):
-        wypozyczone = []
+        wypozyczenia_copy = copy.copy(self.wypozyczenia)
 
-        for egzemplarz in self.wypozyczenia:
-            if egzemplarz.ksiazka_ref.tytul != tytul:
-                wypozyczone.append(egzemplarz)
-            else:
-                egzemplarz.wypozyczony = False
+        for egzemplarz in wypozyczenia_copy:
+            if egzemplarz.ksiazka_ref.tytul == tytul:
+                self.wypozyczenia.remove( egzemplarz )
         
-        if(len(wypozyczone) != len(self.wypozyczenia)):
-            self.wypozyczenia = wypozyczone
-
-            return True
+        if(len(wypozyczenia_copy) == len(self.wypozyczenia)):
+            return False
         
-        return False
+        return True
 
 class Ksiazka:
     def __init__(self, tytul, autor):
