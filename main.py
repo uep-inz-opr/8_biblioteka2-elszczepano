@@ -20,8 +20,6 @@ class Biblioteka:
     
     def _get_egzemplarz(self, tytul):
         for egzemplarz in self.egzemplarze:
-            print("KSIAZKA", egzemplarz.ksiazka_ref.tytul ==
-                  tytul, tytul, egzemplarz.ksiazka_ref.tytul)
             if egzemplarz.ksiazka_ref.tytul == tytul and egzemplarz.wypozyczony == False:
                 return egzemplarz
         return False
@@ -47,22 +45,15 @@ class Biblioteka:
 
             self.czytelnicy.append(czytelnik)
 
-        print("1", len(czytelnik.wypozyczenia) )
-
         # przyjmij też, że domyślnie można wypożyczyć maksymalnie 3 egzemplarze różnych książek
         if( len( czytelnik.wypozyczenia ) > 3 ):
             return False
 
         # można wypożyczyć tylko jeden egzemplarz tej samej książki
-
-        print("2",czytelnik.get_egzemplarz(tytul) != False)
-
         if( czytelnik.get_egzemplarz( tytul ) != False ):
             return False
         
         egzemplarz = self._get_egzemplarz(tytul)
-
-        print("3", egzemplarz)
 
         # brak ksiazek na stanie
         if( egzemplarz == False ):
