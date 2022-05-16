@@ -49,13 +49,13 @@ class Biblioteka:
         if( len( czytelnik.wypozyczenia ) >= 3 ):
             return False
 
+        print(tytul, czytelnik.get_egzemplarz(tytul), czytelnik.wypozyczenia)
+
         # można wypożyczyć tylko jeden egzemplarz tej samej książki
         if( czytelnik.get_egzemplarz( tytul ) != False ):
             return False
         
         egzemplarz = self._get_egzemplarz(tytul)
-
-        print("1",egzemplarz)
 
         # brak ksiazek na stanie
         if( egzemplarz == False ):
