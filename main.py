@@ -106,7 +106,8 @@ class Czytelnik:
             if egzemplarz.ksiazka_ref.tytul == tytul:
                 self.wypozyczenia.remove( egzemplarz )
         
-        print(len(wypozyczenia_copy), len(self.wypozyczenia))
+        print(self.nazwisko, len(wypozyczenia_copy), len(self.wypozyczenia),
+              wypozyczenia_copy, self.wypozyczenia)
         
         if(len(wypozyczenia_copy) == len(self.wypozyczenia)):
             return False
