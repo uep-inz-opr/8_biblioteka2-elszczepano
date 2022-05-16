@@ -105,6 +105,8 @@ class Czytelnik:
         for egzemplarz in self.wypozyczenia:
             if egzemplarz.ksiazka_ref.tytul != tytul:
                 wypozyczone.append(egzemplarz)
+            else:
+                egzemplarz.wypozyczony = False
         
         if(len(wypozyczone) != len(self.wypozyczenia)):
             self.wypozyczenia = wypozyczone
