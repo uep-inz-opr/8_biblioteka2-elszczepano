@@ -20,6 +20,7 @@ class Biblioteka:
     
     def _get_egzemplarz(self, tytul):
         for egzemplarz in self.egzemplarze:
+            print(egzemplarz.ksiazka_ref.tytul, tytul, egzemplarz.wypozyczony)
             if egzemplarz.ksiazka_ref.tytul == tytul and egzemplarz.wypozyczony == False:
                 return egzemplarz
         return False
