@@ -100,14 +100,16 @@ class Czytelnik:
         return True
 
     def oddaj(self, tytul):
-        wypozyczenia_copy = copy.copy(self.wypozyczenia)
+        wypozyczenia_copy = []
 
-        for egzemplarz in wypozyczenia_copy:
-            if egzemplarz.ksiazka_ref.tytul == tytul:
-                self.wypozyczenia.remove( egzemplarz )
+        for egzemplarz in self.wypozyczenia:
+            if egzemplarz.ksiazka_ref.tytul != tytul:
+                wypozyczenia_copy.append(egzemplarz)
         
         if(len(wypozyczenia_copy) == len(self.wypozyczenia)):
             return False
+        
+        self.wypozyczenia = wypozyczenia_copy
         
         return True
 
