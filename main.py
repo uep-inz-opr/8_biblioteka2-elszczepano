@@ -137,7 +137,7 @@ actions_count = int( input() )
 biblioteka = Biblioteka()
 
 for index in range(0, actions_count):
-    command = input().replace('(', '').replace(')', '').replace(' "', '').replace('"', '').split(",")
+    command = input().replace('\r', '').replace('\n', '').replace('(', '').replace(')', '').replace(' "', '').replace('"', '').split(",")
 
     action = command[0]
 
