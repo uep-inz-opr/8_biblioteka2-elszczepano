@@ -1,5 +1,4 @@
-import re
-
+import copy
 
 class Biblioteka:
     limit_wypozyczen = 3
@@ -102,12 +101,16 @@ class Czytelnik:
         return True
 
     def oddaj(self, tytul):
-        for egzemplarz in self.wypozyczenia:
+        wypozyczenia_copy = copy.copy(self.wypozyczenia)
+
+        for egzemplarz in wypozyczenia_copy:
             if egzemplarz.ksiazka_ref.tytul == tytul:
-                # TODO remove from array
-                return True
+                self.wypozyczenia.remove( egzemplarz )
         
-        return False
+        if(len(wypozyczenia_copy) == len(self.wypozyczenia)):
+            return False
+        
+        return True
 
 class Ksiazka:
     def __init__(self, tytul, autor):
@@ -129,23 +132,23 @@ biblioteka = Biblioteka()
 for index in range(0, actions_count):
     command = input().replace('(', '').replace(')', '').replace(' "', '').replace('"', '').split(",")
 
-    action = book[0]
+    action = command[0]
 
     if action == 'dodaj':
-        czytelnik = book[1]
-        tytul = book[2]
-        rok = book[3]
+        czytelnik = command[1]
+        tytul = command[2]
+        rok = command[3]
         is_success = biblioteka.dodaj_egzemplarz_ksiazki(tytul, autor, rok)
         print( is_success )
     
     if action == 'wypozycz':
-        czytelnik = book[1]
-        tytul = book[2]
+        czytelnik = command[1]
+        tytul = command[2]
         is_success = biblioteka.wypozycz(czytelnik, tytul)
         print(is_success)
 
     if action == 'oddaj':
-        czytelnik = book[1]
-        tytul = book[2]
+        czytelnik = command[1]
+        tytul = command[2]
         is_success = biblioteka.oddaj(czytelnik, tytul)
         print(is_success)
