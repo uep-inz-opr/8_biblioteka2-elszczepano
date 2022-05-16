@@ -45,10 +45,8 @@ class Biblioteka:
 
             self.czytelnicy.append(czytelnik)
 
-        print("wypozyczenia", len( czytelnik.wypozyczenia ))
-
         # przyjmij też, że domyślnie można wypożyczyć maksymalnie 3 egzemplarze różnych książek
-        if( len( czytelnik.wypozyczenia ) > 3 ):
+        if( len( czytelnik.wypozyczenia ) >= 3 ):
             return False
 
         # można wypożyczyć tylko jeden egzemplarz tej samej książki
