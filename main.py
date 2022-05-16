@@ -55,6 +55,8 @@ class Biblioteka:
         
         egzemplarz = self._get_egzemplarz(tytul)
 
+        print("1",egzemplarz)
+
         # brak ksiazek na stanie
         if( egzemplarz == False ):
             return False
