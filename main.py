@@ -135,8 +135,8 @@ for index in range(0, actions_count):
     action = command[0]
 
     if action == 'dodaj':
-        czytelnik = command[1]
-        tytul = command[2]
+        tytul = command[1]
+        autor = command[2]
         rok = command[3]
         is_success = biblioteka.dodaj_egzemplarz_ksiazki(tytul, autor, rok)
         print( is_success )
