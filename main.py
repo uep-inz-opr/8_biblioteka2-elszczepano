@@ -20,7 +20,8 @@ class Biblioteka:
     
     def _get_egzemplarz(self, tytul):
         for egzemplarz in self.egzemplarze:
-            print(egzemplarz.ksiazka_ref.tytul, tytul, egzemplarz.wypozyczony)
+            print("KSIAZKA", egzemplarz.ksiazka_ref.tytul, tytul,
+                  egzemplarz.wypozyczony, egzemplarz.wypozyczony == False, egzemplarz.ksiazka_ref.tytul == tytul)
             if egzemplarz.ksiazka_ref.tytul == tytul and egzemplarz.wypozyczony == False:
                 return egzemplarz
         return False
@@ -130,7 +131,6 @@ class Egzemplarz:
     def __init__(self, ksiazka_ref, rok_wydania):
         self.ksiazka_ref = ksiazka_ref
         self.rok_wydania = rok_wydania
-        self.wypozyczony = False
     
 actions_count = int( input() )
 
