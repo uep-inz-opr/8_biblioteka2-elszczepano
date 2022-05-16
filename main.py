@@ -100,19 +100,18 @@ class Czytelnik:
         return True
 
     def oddaj(self, tytul):
-        wypozyczenia_copy = copy.copy(self.wypozyczenia)
+        wypozyczone = []
 
-        for egzemplarz in wypozyczenia_copy:
-            if egzemplarz.ksiazka_ref.tytul == tytul:
-                self.wypozyczenia.remove( egzemplarz )
+        for egzemplarz in self.wypozyczenia:
+            if egzemplarz.ksiazka_ref.tytul != tytul:
+                wypozyczone.append(egzemplarz)
         
-        print(self.nazwisko, len(wypozyczenia_copy), len(self.wypozyczenia),
-              wypozyczenia_copy, self.wypozyczenia)
+        if(len(wypozyczone) != len(self.wypozyczenia)):
+            self.wypozyczenia = wypozyczone
+
+            return True
         
-        if(len(wypozyczenia_copy) == len(self.wypozyczenia)):
-            return False
-        
-        return True
+        return False
 
 class Ksiazka:
     def __init__(self, tytul, autor):
